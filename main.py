@@ -1,19 +1,9 @@
 from flask import Flask, render_template, request, jsonify
-from dotenv import load_dotenv
 import google.generativeai as genai
 import os
 
-load_dotenv()
-
-# Carrega a chave de API do arquivo .env
-GEMINI_API_KEY = AIzaSyCHCgeKxkdlVzGzE72-xRI12AuQojG0pp0
-
-# Verifica se a chave de API foi configurada
-if not GEMINI_API_KEY:
-    raise ValueError("A chave de API do Gemini não foi configurada no arquivo .env")
-
 # Configura a API do Gemini
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key=AIzaSyCHCgeKxkdlVzGzE72-xRI12AuQojG0pp0)
 model = genai.GenerativeModel('gemini-2.0-flash')  # Use 'gemini-pro' para texto
 
 app = Flask(__name__)

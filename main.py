@@ -6,7 +6,7 @@ import os
 load_dotenv()
 
 # Carrega a chave de API do arquivo .env
-GEMINI_API_KEY = os.getenv('API')
+GEMINI_API_KEY = AIzaSyCHCgeKxkdlVzGzE72-xRI12AuQojG0pp0
 
 # Verifica se a chave de API foi configurada
 if not GEMINI_API_KEY:

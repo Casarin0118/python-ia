@@ -1,6 +1,11 @@
 async function fetchBotResponse(messageText) {
     try {
         const response = await fetch(`${window.location.href}search?prompt=${messageText}`);
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Erro na requisição:', response.status, errorData);
+            return `Desculpe, ocorreu um erro: ${errorData.error || response.statusText}`;
+        }
         const data = await response.json();
         return data.message;
     } catch (error) {

@@ -14,7 +14,7 @@ if not GEMINI_API_KEY:
 
 # Configura a API do Gemini
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-pro')  # Use 'gemini-pro' para texto
+model = genai.GenerativeModel('gemini-2.0-flash')  # Use 'gemini-pro' para texto
 
 app = Flask(__name__)
 
@@ -32,9 +32,13 @@ def search():
     context = 'Responda como se fosse uma inteligência artificial chamada Pedro'
     input_ia = f'{context}: {prompt}'  # Melhor formatação do prompt
     try:
+        print(f"Enviando prompt para a API: {input_ia}")  # Log do prompt enviado
         response = model.generate_content(input_ia)
+        print(f"Resposta completa da API: {response}")  # Log da resposta completa
+        print(f"Texto da resposta da API: {response.text}")  # Log do texto da resposta
         return jsonify({'message': response.text})
     except Exception as e:
+        print(f"Erro ao gerar resposta: {e}")  # Log do erro
         return jsonify({'error': f'Ocorreu um erro na geração da resposta: {e}'}), 500
 
 if __name__ == '__main__':

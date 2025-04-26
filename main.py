@@ -16,7 +16,10 @@ def index():
 
 @app.route('/search')
 def search():
-    model = genai.GenerativeModel('gemini-1.0-pro-latest')
+
+    client = genai.Client(api_key="AIzaSyCHCgeKxkdlVzGzE72-xRI12AuQojG0pp0")
+
+genai.GenerativeModel('gemini-1.0-pro-latest')
     context = 'Responda como se fosse uma inteligência artificial chamada Pedro'
     prompt = request.args.get('prompt')
     
